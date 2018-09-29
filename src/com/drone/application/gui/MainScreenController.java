@@ -1,17 +1,21 @@
 package com.drone.application.gui;
 
-/**
+/**------------------------------------------------------------------------------------------------------------------------------------------------------------
 * The MainScreenController class controls the functional aspects to
 * displays MainScreen UI to the standard stage.
 *
 * @author  Akash Sevana
 * @version 1.0
-* @since   2018-09-29 
+* @since   2018-09-29
+* ------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 */
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.drone.application.gui.utils.DataSource;
+import com.lynden.gmapsfx.MapComponentInitializedListener;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,16 +28,30 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class MainScreenController implements Initializable {
+public class MainScreenController implements Initializable, MapComponentInitializedListener {
 	
 	final String RESOURCE_PATH = "resources/";
 	
+	protected static DataSource droneparameters;
+	
+	public DataSource getDroneparameters() {
+		return droneparameters;
+	}
+
+
+	public void setDroneparameters(DataSource droneparameters) {
+		this.droneparameters = droneparameters;
+	}
+
+
 	@FXML
 	BorderPane MainScreen;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
+		System.out.println("loading default datasource");
+		droneparameters = new DataSource();
+		System.out.println("params loaded");
 	}
 	
 	
@@ -123,5 +141,11 @@ public class MainScreenController implements Initializable {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	public void mapInitialized() {
+		
 	}
 }

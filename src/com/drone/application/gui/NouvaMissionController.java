@@ -12,6 +12,7 @@ package com.drone.application.gui;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -25,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class NouvaMissionController implements Initializable{
+public class NouvaMissionController extends MainScreenController implements Initializable{
 
 	final String RESOURCE_PATH = "resources/";
 	@FXML
@@ -43,16 +44,44 @@ public class NouvaMissionController implements Initializable{
 	@FXML
 	private ArrayList<TextField> algoList;
 	
+	protected ArrayList<Integer> CommunicationParams;
+	protected ArrayList<Double> AlgorithmParams;
+	protected ArrayList<Double> ScenarioParams;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		for(TextField t : commList) {
-			t.setText("TBD");
+		if(MainScreenController.droneparameters == null)
+			System.out.println("why null");
+		CommunicationParams = MainScreenController.droneparameters.getCommunicationParams();
+		if(CommunicationParams == null)
+			System.out.println("why null");
+		Iterator<TextField> cl = commList.iterator();
+		Iterator<Integer> cp = CommunicationParams.iterator();
+		
+		while (cl.hasNext() && cp.hasNext()) {
+			TextField t = cl.next();
+			Integer value = cp.next();
+			t.setText(value.toString());
 		}
-		for(TextField t : scenarioList) {
-			t.setText("TBD");
+		
+		ScenarioParams = droneparameters.getScenarioParams();
+		Iterator<TextField> sl = scenarioList.iterator();
+		Iterator<Double> sp = ScenarioParams.iterator();
+		
+		while (sl.hasNext() && sp.hasNext()) {
+			TextField t = sl.next();
+			Double value = sp.next();
+			t.setText(value.toString());
 		}
-		for(TextField t : algoList) {
-			t.setText("TBD");
+		
+		AlgorithmParams = droneparameters.getAlgorithmParams();
+		Iterator<TextField> al = algoList.iterator();
+		Iterator<Double> ap = AlgorithmParams.iterator();
+		
+		while (al.hasNext() && ap.hasNext()) {
+			TextField t = al.next();
+			Double value = ap.next();
+			t.setText(value.toString());
 		}
 	}
 	
@@ -87,12 +116,21 @@ public class NouvaMissionController implements Initializable{
 	
 	@FXML
 	private void handleresetComm(ActionEvent event) {
-		
+		for(TextField t : commList)
+			t.setText("");
 	}
 	
 	@FXML
 	private void handleloadComm(ActionEvent event) {
+		CommunicationParams = droneparameters.getCommunicationParams();
+		Iterator<TextField> cl = commList.iterator();
+		Iterator<Integer> cp = CommunicationParams.iterator();
 		
+		while (cl.hasNext() && cp.hasNext()) {
+			TextField t = cl.next();
+			Integer value = cp.next();
+			t.setText(value.toString());
+		}
 	}
 	
 	
@@ -104,12 +142,21 @@ public class NouvaMissionController implements Initializable{
 	
 	@FXML
 	private void handleresetScenario(ActionEvent event) {
-		
+		for(TextField t : scenarioList)
+			t.setText("");
 	}
 	
 	@FXML
 	private void handleloadScenario(ActionEvent event) {
+		ScenarioParams = droneparameters.getScenarioParams();
+		Iterator<TextField> sl = scenarioList.iterator();
+		Iterator<Double> sp = ScenarioParams.iterator();
 		
+		while (sl.hasNext() && sp.hasNext()) {
+			TextField t = sl.next();
+			Double value = sp.next();
+			t.setText(value.toString());
+		}
 	}
 
 	
@@ -121,12 +168,21 @@ public class NouvaMissionController implements Initializable{
 	
 	@FXML
 	private void handleresetAlgo(ActionEvent event) {
-		
+		for(TextField t : algoList)
+			t.setText("");
 	}
 	
 	@FXML
 	private void handleloadAlgo(ActionEvent event) {
+		AlgorithmParams = droneparameters.getAlgorithmParams();
+		Iterator<TextField> al = algoList.iterator();
+		Iterator<Double> ap = AlgorithmParams.iterator();
 		
+		while (al.hasNext() && ap.hasNext()) {
+			TextField t = al.next();
+			Double value = ap.next();
+			t.setText(value.toString());
+		}
 	}
 	
 	

@@ -1,5 +1,15 @@
 package com.drone.application.gui;
 
+/**------------------------------------------------------------------------------------------------------------------------------------------------------------
+* The ViewTargetController class controls the functional aspects to
+* displays View Target UI to the standard stage.
+*
+* @author  Akash Sevana
+* @version 1.0
+* @since   2018-09-29
+* ------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
