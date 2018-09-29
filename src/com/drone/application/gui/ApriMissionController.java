@@ -29,7 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ApriMissionController extends MainScreenController implements Initializable{
+public class ApriMissionController extends MainScreenController implements Initializable {
 
 	final String RESOURCE_PATH = "resources/";
 	

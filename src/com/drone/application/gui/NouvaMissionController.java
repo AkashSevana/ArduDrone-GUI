@@ -26,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class NouvaMissionController extends MainScreenController implements Initializable{
+public class NouvaMissionController extends ViewMissionController implements Initializable{
 
 	final String RESOURCE_PATH = "resources/";
 	@FXML
@@ -43,6 +43,21 @@ public class NouvaMissionController extends MainScreenController implements Init
 	// List containing Algorithm parameters
 	@FXML
 	private ArrayList<TextField> algoList;
+	
+	
+	// List containing latitude details
+	@FXML
+	private ArrayList<TextField> latList;
+	
+	// List containing longitude details
+	@FXML
+	private ArrayList<TextField> lonList;
+	// List containing add Buttons
+	@FXML
+	private ArrayList<TextField> addButtonList;
+	// List containing panes
+	@FXML
+	private ArrayList<TextField> paneList;
 	
 	protected ArrayList<Integer> CommunicationParams;
 	protected ArrayList<Double> AlgorithmParams;
@@ -64,7 +79,7 @@ public class NouvaMissionController extends MainScreenController implements Init
 			t.setText(value.toString());
 		}
 		
-		ScenarioParams = droneparameters.getScenarioParams();
+		ScenarioParams = MainScreenController.droneparameters.getScenarioParams();
 		Iterator<TextField> sl = scenarioList.iterator();
 		Iterator<Double> sp = ScenarioParams.iterator();
 		
@@ -74,7 +89,7 @@ public class NouvaMissionController extends MainScreenController implements Init
 			t.setText(value.toString());
 		}
 		
-		AlgorithmParams = droneparameters.getAlgorithmParams();
+		AlgorithmParams = MainScreenController.droneparameters.getAlgorithmParams();
 		Iterator<TextField> al = algoList.iterator();
 		Iterator<Double> ap = AlgorithmParams.iterator();
 		
@@ -122,7 +137,7 @@ public class NouvaMissionController extends MainScreenController implements Init
 	
 	@FXML
 	private void handleloadComm(ActionEvent event) {
-		CommunicationParams = droneparameters.getCommunicationParams();
+		CommunicationParams = MainScreenController.droneparameters.getCommunicationParams();
 		Iterator<TextField> cl = commList.iterator();
 		Iterator<Integer> cp = CommunicationParams.iterator();
 		
@@ -148,7 +163,7 @@ public class NouvaMissionController extends MainScreenController implements Init
 	
 	@FXML
 	private void handleloadScenario(ActionEvent event) {
-		ScenarioParams = droneparameters.getScenarioParams();
+		ScenarioParams = MainScreenController.droneparameters.getScenarioParams();
 		Iterator<TextField> sl = scenarioList.iterator();
 		Iterator<Double> sp = ScenarioParams.iterator();
 		
@@ -174,7 +189,7 @@ public class NouvaMissionController extends MainScreenController implements Init
 	
 	@FXML
 	private void handleloadAlgo(ActionEvent event) {
-		AlgorithmParams = droneparameters.getAlgorithmParams();
+		AlgorithmParams = MainScreenController.droneparameters.getAlgorithmParams();
 		Iterator<TextField> al = algoList.iterator();
 		Iterator<Double> ap = AlgorithmParams.iterator();
 		
@@ -265,12 +280,28 @@ public class NouvaMissionController extends MainScreenController implements Init
 	
 	@FXML
 	private void handleresetTarget(ActionEvent event) {
-		
+		for(TextField t : latList) {
+			t.setText("");
+		}
+		for(TextField t : lonList) {
+			t.setText("");
+		}
 	}
 	
 	@FXML
 	private void handleloadTarget(ActionEvent event) {
+		ArrayList<String> targetsParams;
 		
+		targetsParams = MainScreenController.droneparameters.getTargetParams();
+		Iterator<TextField> ll = latList.iterator();
+		Iterator<TextField> llon = lonList.iterator();
+		Iterator<String> tp = targetsParams.iterator();
+		
+		while(ll.hasNext() && tp.hasNext() && llon.hasNext()) {
+			String[] position = tp.next().split(", ");
+			ll.next().setText(position[0]);
+			llon.next().setText(position[1]);
+		}
 	}
 	
 }

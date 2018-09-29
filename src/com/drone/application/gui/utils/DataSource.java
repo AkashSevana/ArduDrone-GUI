@@ -14,7 +14,6 @@ package com.drone.application.gui.utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class DataSource {
     
@@ -87,7 +86,7 @@ public class DataSource {
     private double T7lonOwnDeg;
     private double T8lonOwnDeg;
     
-    LinkedHashMap<Double, Double> TargetParams;
+    ArrayList<String> TargetParams;
     
     public int getNumberOfSendToAutopilot() {
         return numberOfSendToAutopilot;
@@ -465,11 +464,11 @@ public class DataSource {
         this.AlgorithmParams = AlgorithmParams;
     }
 
-    public LinkedHashMap<Double, Double> getTargetParams() {
+    public ArrayList<String> getTargetParams() {
         return TargetParams;
     }
 
-    public void setTargetParams(LinkedHashMap<Double, Double> TargetParams) {
+    public void setTargetParams(ArrayList<String> TargetParams) {
         this.TargetParams = TargetParams;
     }
 
@@ -492,7 +491,7 @@ public class DataSource {
         AlgorithmParams = new ArrayList<Double>();
         ScenarioParams = new ArrayList<Double>();               
         CommunicationParams = new ArrayList<Integer>();
-        TargetParams = new LinkedHashMap<Double, Double>();
+        TargetParams = new ArrayList<String>();
         ReadXls xls = new ReadXls(file);
         try{
             
@@ -518,6 +517,8 @@ public class DataSource {
                         }
                         if (data[j][i].equals("COMport")){
                             COMport = data[j+1][i];                        // [] Porta con cui comunicare con l'autopilota                           
+                            int COMportI = Integer.parseInt(COMport.replaceFirst("COM", ""));  // Storing Only value
+                            CommunicationParams.add(COMportI);
                         }
                         if (data[j][i].equals("COMrate")){
                             COMrate = Integer.parseInt(data[j+1][i]);      // [Hz] Rate di comunicazione con l'autopilot                            
@@ -609,47 +610,47 @@ public class DataSource {
                         if (data[j][i].equals("TakeOff")) {
                             takeofflat = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             takeofflon = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo
-                            TargetParams.put(takeofflat, takeofflon);
+                            TargetParams.add(new String(takeofflat + ", " + takeofflon));
                         }
                         if (data[j][i].equals("T1")) {
                             T1latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T1lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T1latOwnDeg, T1lonOwnDeg);
+                            TargetParams.add(new String(T1latOwnDeg + ", " + T1lonOwnDeg));
                         }
                         if (data[j][i].equals("T2")) {
                             T2latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T2lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T2latOwnDeg, T2lonOwnDeg);
+                            TargetParams.add(new String(T2latOwnDeg + ", " + T2lonOwnDeg));
                         }
                         if (data[j][i].equals("T3")) {
                             T3latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T3lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T3latOwnDeg, T3lonOwnDeg);
+                            TargetParams.add(new String(T3latOwnDeg + ", " + T3lonOwnDeg));
                         }
                         if (data[j][i].equals("T4")) {
                             T4latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T4lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T4latOwnDeg, T4lonOwnDeg);
+                            TargetParams.add(new String(T4latOwnDeg + ", " + T4lonOwnDeg));
                         }
                         if (data[j][i].equals("T5")) {
                             T5latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T5lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T5latOwnDeg, T5lonOwnDeg);
+                            TargetParams.add(new String(T5latOwnDeg + ", " + T5lonOwnDeg));
                         }
                         if (data[j][i].equals("T6")) {
                             T6latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T6lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T6latOwnDeg, T6lonOwnDeg);
+                            TargetParams.add(new String(T6latOwnDeg + ", " + T6lonOwnDeg));
                         }
                         if (data[j][i].equals("T7")) {
                             T7latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T7lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T7latOwnDeg, T7lonOwnDeg);
+                            TargetParams.add(new String(T7latOwnDeg + ", " + T7lonOwnDeg));
                         }
                         if (data[j][i].equals("T8")) {
                             T8latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T8lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
-                            TargetParams.put(T8latOwnDeg, T8lonOwnDeg);
+                            TargetParams.add(new String(T8latOwnDeg + ", " + T8lonOwnDeg));
                         }
                     }
                 }
@@ -658,5 +659,6 @@ public class DataSource {
             e.printStackTrace();
 	}
     }
+    
 }
 

@@ -35,12 +35,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	protected static DataSource droneparameters;
 	
 	public DataSource getDroneparameters() {
-		return droneparameters;
+		return MainScreenController.droneparameters;
 	}
 
 
 	public void setDroneparameters(DataSource droneparameters) {
-		this.droneparameters = droneparameters;
+		MainScreenController.droneparameters = droneparameters;
 	}
 
 

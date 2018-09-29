@@ -12,6 +12,7 @@ package com.drone.application.gui;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -24,18 +25,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class ViewTargetController implements Initializable{
+public class ViewTargetController extends MainScreenController implements Initializable{
 
 	final String RESOURCE_PATH = "resources/";
 	
 	// List of labels to display the targets
 	@FXML
 	private ArrayList<Label> labelList;
-	
+	ArrayList<String> targetsParams;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		for(Label l : labelList) {
-			l.setText("Not Determined Yet!");
+		targetsParams = MainScreenController.droneparameters.getTargetParams();
+		Iterator<Label> ll = labelList.iterator();
+		Iterator<String> tp = targetsParams.iterator();
+		
+		while(ll.hasNext() && tp.hasNext()) {
+			String[] position = tp.next().split(", ");
+			ll.next().setText(position[0]);
+			ll.next().setText(position[1]);
 		}
 	}
 
