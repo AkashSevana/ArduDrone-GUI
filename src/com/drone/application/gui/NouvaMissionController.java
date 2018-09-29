@@ -22,8 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class NouvaMissionController extends ViewMissionController implements Initializable{
@@ -54,10 +56,12 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 	private ArrayList<TextField> lonList;
 	// List containing add Buttons
 	@FXML
-	private ArrayList<TextField> addButtonList;
+	private ArrayList<Button> addButtonList;
 	// List containing panes
 	@FXML
-	private ArrayList<TextField> paneList;
+	private ArrayList<Pane> paneList;
+	
+	private int countPane = 0;
 	
 	protected ArrayList<Integer> CommunicationParams;
 	protected ArrayList<Double> AlgorithmParams;
@@ -210,72 +214,108 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 	
 	@FXML
 	private void handletargetButtonDel1(ActionEvent event) {
-		
+		checkAndPerformUIchange(2);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel2(ActionEvent event) {
-		
+		checkAndPerformUIchange(3);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel3(ActionEvent event) {
-		
+		checkAndPerformUIchange(4);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel4(ActionEvent event) {
-		
+		checkAndPerformUIchange(5);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel5(ActionEvent event) {
-		
+		checkAndPerformUIchange(6);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel6(ActionEvent event) {
-		
+		System.out.println("Del 6");
+		checkAndPerformUIchange(7);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonDel7(ActionEvent event) {
-		
+		System.out.println("Del 7");
+		paneList.get(7).setVisible(false);
+		countPane--;
+		addButtonList.get(countPane).setVisible(true);
 	}
 	
 	@FXML
 	private void handletargetButtonAdd1(ActionEvent event) {
-		
+		paneList.get(1).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(1).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd2(ActionEvent event) {
-		
+		paneList.get(2).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(2).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd3(ActionEvent event) {
-		
+		paneList.get(3).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(3).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd4(ActionEvent event) {
-		
+		paneList.get(4).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(4).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd5(ActionEvent event) {
-		
+		paneList.get(5).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(5).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd6(ActionEvent event) {
-		
+		paneList.get(6).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		addButtonList.get(6).setVisible(true);
+		countPane++;
 	}
 	
 	@FXML
 	private void handletargetButtonAdd7(ActionEvent event) {
-		
+		paneList.get(7).setVisible(true);
+		((Button)event.getSource()).setVisible(false);
+		countPane++;
 	}
 	
 	@FXML
@@ -304,4 +344,17 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 		}
 	}
 	
+	
+	private void checkAndPerformUIchange(int value) {
+		int i = value;
+		for(i = value; i <= countPane; ++i) {
+			
+			latList.get(i).setText(latList.get(i+1).getText());
+			lonList.get(i).setText(lonList.get(i+1).getText());
+		}
+		System.out.println(countPane);
+		paneList.get(countPane).setVisible(false);
+		if(countPane < 7)
+			addButtonList.get(countPane).setVisible(false);
+	}
 }

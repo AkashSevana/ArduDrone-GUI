@@ -200,7 +200,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #201717;">
                      <children>
                         <Button layoutX="310.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleresetAlgo" text="Reset" />
-                        <Button layoutX="554.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleresetAlgo" text="Load" />
+                        <Button layoutX="554.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleloadAlgo" text="Load" />
                         <GridPane layoutX="282.0" layoutY="65.0" prefHeight="326.0" prefWidth="387.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

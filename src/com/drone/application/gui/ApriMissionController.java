@@ -68,6 +68,7 @@ public class ApriMissionController extends MainScreenController implements Initi
 	@FXML
 	private void handleApriLoad(ActionEvent event) {
 		System.out.println("Loading the values");
+		loadMainScreen(event);
 	}
 	
 	@FXML
@@ -79,7 +80,7 @@ public class ApriMissionController extends MainScreenController implements Initi
         String path = xlsFile.getAbsolutePath();
         ApriPath.setText(path);
         DataSource newObj = new DataSource(path);
-        droneparameters = newObj;
-        ApriText.setText(droneparameters.toString());
+        setDroneparameters(newObj);
+        ApriText.setText(MainScreenController.droneparameters.toString());
 	}
 }
