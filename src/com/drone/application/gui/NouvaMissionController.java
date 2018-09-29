@@ -11,6 +11,7 @@ package com.drone.application.gui;
 */
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -27,11 +29,31 @@ public class NouvaMissionController implements Initializable{
 
 	final String RESOURCE_PATH = "resources/";
 	@FXML
-	BorderPane NuovaScreen;
+	private BorderPane NuovaScreen;
+	
+	// List containing Communication parameters
+	@FXML
+	private ArrayList<TextField> commList;
+	
+	// List containing Scenarios parameters
+	@FXML
+	private ArrayList<TextField> scenarioList;
+	
+	// List containing Algorithm parameters
+	@FXML
+	private ArrayList<TextField> algoList;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		for(TextField t : commList) {
+			t.setText("TBD");
+		}
+		for(TextField t : scenarioList) {
+			t.setText("TBD");
+		}
+		for(TextField t : algoList) {
+			t.setText("TBD");
+		}
 	}
 	
 	/*-------------------------------------------------------------------------

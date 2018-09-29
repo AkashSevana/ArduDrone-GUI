@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import java.util.ArrayList?>
 
 <BorderPane fx:id="NuovaScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.NouvaMissionController">
    <top>
@@ -409,4 +410,79 @@
         </tabs>
       </TabPane>
    </center>
+      <!-- Need to uncomment the below code while opening in Scene Builder -->
+   <fx:define>
+    <ArrayList fx:id="commList">
+        <fx:reference source="T1" />
+        <fx:reference source="T2" />
+        <fx:reference source="T3" />
+        <fx:reference source="T4" />
+        <fx:reference source="T5" />
+        <fx:reference source="T6" />
+        <fx:reference source="T7" />
+    </ArrayList>
+    <ArrayList fx:id="scenarioList">
+        <fx:reference source="T8" />
+        <fx:reference source="T9" />
+        <fx:reference source="T10" />
+        <fx:reference source="T11" />
+        <fx:reference source="T12" />
+        <fx:reference source="T13" />
+        <fx:reference source="T14" />
+        <fx:reference source="T15" />
+        <fx:reference source="T16" />
+    </ArrayList>
+    <ArrayList fx:id="algoList">
+        <fx:reference source="T17" />
+        <fx:reference source="T18" />
+        <fx:reference source="T19" />
+        <fx:reference source="T20" />
+        <fx:reference source="T21" />
+        <fx:reference source="T22" />
+        <fx:reference source="T23" />
+        <fx:reference source="T24" />
+        <fx:reference source="T25" />
+    </ArrayList>
+    <ArrayList fx:id="latList">
+        <fx:reference source="T26" />
+        <fx:reference source="T28" />
+        <fx:reference source="T30" />
+        <fx:reference source="T32" />
+        <fx:reference source="T34" />
+        <fx:reference source="T36" />
+        <fx:reference source="T38" />
+        <fx:reference source="T40" />
+        <fx:reference source="T42" />
+    </ArrayList>
+    <ArrayList fx:id="lonList">
+        <fx:reference source="T27" />
+        <fx:reference source="T29" />
+        <fx:reference source="T31" />
+        <fx:reference source="T33" />
+        <fx:reference source="T35" />
+        <fx:reference source="T37" />
+        <fx:reference source="T39" />
+        <fx:reference source="T41" />
+        <fx:reference source="T43" />
+    </ArrayList>
+    <ArrayList fx:id="addButtonList">
+        <fx:reference source="Add1" />
+        <fx:reference source="Add2" />
+        <fx:reference source="Add3" />
+        <fx:reference source="Add4" />
+        <fx:reference source="Add5" />
+        <fx:reference source="Add6" />
+        <fx:reference source="Add7" />
+    </ArrayList>
+    <ArrayList fx:id="paneList">
+        <fx:reference source="P1" />
+        <fx:reference source="P2" />
+        <fx:reference source="P3" />
+        <fx:reference source="P4" />
+        <fx:reference source="P5" />
+        <fx:reference source="P6" />
+        <fx:reference source="P7" />
+        <fx:reference source="P8" />
+    </ArrayList>
+  </fx:define>
 </BorderPane>

@@ -1,6 +1,7 @@
 package com.drone.application.gui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -10,17 +11,29 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ViewTargetController implements Initializable{
 
 	final String RESOURCE_PATH = "resources/";
 	
+	// List of labels to display the targets
+	@FXML
+	private ArrayList<Label> labelList;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+		for(Label l : labelList) {
+			l.setText("Not Determined Yet!");
+		}
 	}
+
+	/*-------------------------------------------------------------------------
+	 * Function which is used to Navigate back to Main Screen
+	 * @Param: ActionEvent
+	 * ------------------------------------------------------------------------
+	 */
 
 	@FXML
     private void loadMainScreen(ActionEvent event) {

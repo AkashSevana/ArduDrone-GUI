@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import java.util.ArrayList?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.NouvaMissionController">
    <top>
@@ -263,4 +264,38 @@
         </tabs>
       </TabPane>
    </center>
+   <!-- Need to uncomment the below code while opening in Scene Builder -->
+   <fx:define>
+    <ArrayList fx:id="commList">
+        <fx:reference source="T1" />
+        <fx:reference source="T2" />
+        <fx:reference source="T3" />
+        <fx:reference source="T4" />
+        <fx:reference source="T5" />
+        <fx:reference source="T6" />
+        <fx:reference source="T7" />
+    </ArrayList>
+    <ArrayList fx:id="scenarioList">
+        <fx:reference source="T8" />
+        <fx:reference source="T9" />
+        <fx:reference source="T10" />
+        <fx:reference source="T11" />
+        <fx:reference source="T12" />
+        <fx:reference source="T13" />
+        <fx:reference source="T14" />
+        <fx:reference source="T15" />
+        <fx:reference source="T16" />
+    </ArrayList>
+    <ArrayList fx:id="algoList">
+        <fx:reference source="T17" />
+        <fx:reference source="T18" />
+        <fx:reference source="T19" />
+        <fx:reference source="T20" />
+        <fx:reference source="T21" />
+        <fx:reference source="T22" />
+        <fx:reference source="T23" />
+        <fx:reference source="T24" />
+        <fx:reference source="T25" />
+    </ArrayList>
+  </fx:define>
 </BorderPane>

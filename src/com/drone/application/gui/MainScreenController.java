@@ -59,6 +59,12 @@ public class MainScreenController implements Initializable {
 		}
 	}
 
+	/*-------------------------------------------------------------------------
+	 * Function which is used to Navigate to Apri Missione
+	 * @Param: ActionEvent
+	 * ------------------------------------------------------------------------
+	 */
+
 	@FXML
     private void loadApriMissione(ActionEvent event) {
 		System.out.println("loading Apri Missione " + getClass().getResource(RESOURCE_PATH + "ApriMission.fxml"));
@@ -74,7 +80,13 @@ public class MainScreenController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/*-------------------------------------------------------------------------
+	 * Function which is used to Navigate to View Missione
+	 * @Param: ActionEvent
+	 * ------------------------------------------------------------------------
+	 */
+
 	@FXML
     private void loadViewMissione(MouseEvent event) {
 		System.out.println("loading View Missione " + getClass().getResource(RESOURCE_PATH + "ViewMission.fxml"));
@@ -90,7 +102,13 @@ public class MainScreenController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/*-------------------------------------------------------------------------
+	 * Function which is used to Navigate to View Target
+	 * @Param: ActionEvent
+	 * ------------------------------------------------------------------------
+	 */
+
 	@FXML
     private void loadViewTarget(MouseEvent event) {
 		System.out.println("loading View Target " + getClass().getResource(RESOURCE_PATH + "ViewTargets.fxml"));

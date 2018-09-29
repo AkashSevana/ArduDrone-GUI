@@ -6,6 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
+<?import java.util.ArrayList?>
 
 <BorderPane prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.ViewTargetController">
    <top>
@@ -201,4 +202,27 @@
          </children>
       </AnchorPane>
    </center>
+   <!-- Need to comment the below code while opening in Scene Builder -->
+   <fx:define>
+    <ArrayList fx:id="labelList">
+        <fx:reference source="L1" />
+        <fx:reference source="L2" />
+        <fx:reference source="L3" />
+        <fx:reference source="L4" />
+        <fx:reference source="L5" />
+        <fx:reference source="L6" />
+        <fx:reference source="L7" />
+        <fx:reference source="L8" />
+        <fx:reference source="L9" />
+        <fx:reference source="L10" />
+        <fx:reference source="L11" />
+        <fx:reference source="L12" />
+        <fx:reference source="L13" />
+        <fx:reference source="L14" />
+        <fx:reference source="L15" />
+        <fx:reference source="L16" />
+        <fx:reference source="L17" />
+        <fx:reference source="L18" /> 
+    </ArrayList>
+  </fx:define>
 </BorderPane>
