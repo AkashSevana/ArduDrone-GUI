@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.ViewTargetController">
+   <top>
+      <Pane prefHeight="87.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="323.0" text="View Targets">
+               <font>
+                  <Font name="MV Boli" size="50.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadMainScreen">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@UIItems/icons8-back-to-filled-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #201717;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="287.0" layoutY="24.0" prefHeight="416.0" prefWidth="456.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Lat[DEG]" textFill="#a8ee25" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Corbel Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Lon[DEG]" textFill="#a8ee25" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Corbel Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="TakeOff" textFill="#a8ee25" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L1" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L2" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L3" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L5" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L7" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L9" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L11" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L13" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L15" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L17" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L4" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L6" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L8" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L10" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L12" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L14" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L16" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="L18" text="TakeOff" textFill="#a8ee25" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T1" textFill="#a8ee25" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T2" textFill="#a8ee25" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T3" textFill="#a8ee25" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T4" textFill="#a8ee25" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T5" textFill="#a8ee25" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T6" textFill="#a8ee25" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T7" textFill="#a8ee25" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="T8" textFill="#a8ee25" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="Corbel Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

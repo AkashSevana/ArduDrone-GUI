@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="MainScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.MainScreenController">
+   <top>
+      <MenuBar maxHeight="60.0" prefHeight="60.0" style="-fx-background-color: #141414;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#loadNuovaMissione" text="Nuova Missione" />
+                  <MenuItem mnemonicParsing="false" text="Apri Missione" onAction="#loadApriMissione"/>
+                  <MenuItem mnemonicParsing="false" text="Salva" />
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
+            </items>
+               <graphic>
+                  <Label prefHeight="55.0" prefWidth="126.0" text="Manage Mission" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-maintenance-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label onMouseClicked="#loadViewMissione" prefHeight="52.0" prefWidth="125.0" text="View Mission" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-opera-glasses-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label onMouseClicked="#loadViewTarget" prefHeight="55.0" prefWidth="102.0" text="View Target" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-collect-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+          </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label prefHeight="58.0" prefWidth="59.0" text="Log" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-edit-property-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label text="Start" textFill="#f5f0f0">
+                     <graphic>
+                        <Pane prefHeight="53.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="67.0" fitWidth="47.0" layoutX="163.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@UIItems/icons8-play-52.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label prefHeight="58.0" prefWidth="64.0" text="Stop" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-stop-sign-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Label prefHeight="52.0" prefWidth="97.0" text="Connect" textFill="#f5f0f0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@UIItems/icons8-hdmi-cable-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="314.0" style="-fx-background-color: #DCDCDC;">
+         <children>
+            <ImageView fitHeight="202.0" fitWidth="315.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@UIItems/horizon.png" />
+               </image>
+            </ImageView>
+            <TextFlow layoutY="199.0" prefHeight="29.0" prefWidth="315.0" textAlignment="CENTER">
+               <children>
+                  <Label opacity="0.71" prefHeight="34.0" prefWidth="202.0" text="GPS INFORMATION" textAlignment="CENTER" textFill="#1d3903">
+                     <font>
+                        <Font name="Brush Script MT Italic" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </TextFlow>
+            <Accordion layoutX="-1.0" layoutY="233.0" prefHeight="358.0" prefWidth="316.0">
+              <panes>
+                <TitledPane text="Drone 1">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Drone 2">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Drone 3">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DCDCFF;" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

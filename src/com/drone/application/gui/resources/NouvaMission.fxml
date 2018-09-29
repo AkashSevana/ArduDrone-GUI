@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="NuovaScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.NouvaMissionController">
+   <top>
+      <Pane BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="253.0" text="NUOVA MISSIONE" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="MV Boli" size="50.0" />
+               </font>
+            </Label>
+            <Button graphicTextGap="4.0" layoutX="29.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadMainScreen">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@UIItems/icons8-back-to-filled-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Paremetri di comunicazione ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #201717;">
+                     <children>
+                        <Button layoutX="328.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleresetComm" text="Reset" />
+                        <Button layoutX="557.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleloadComm" text="Load" />
+                        <GridPane layoutX="293.0" layoutY="84.0" prefHeight="270.0" prefWidth="364.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="NumberOfSendToAutopilot1" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="NumberOfSendToOthers" textFill="#a8ee25" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="NumberOfSendEndMission" textFill="#a8ee25" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SerialOrUDP" textFill="#a8ee25" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="COMport" textFill="#a8ee25" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="COMrate" textFill="#a8ee25" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="COMtimeOut" textFill="#a8ee25" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T1" GridPane.columnIndex="1" />
+                              <TextField fx:id="T2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="T3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="T4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="T5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="T6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="T7" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Parametri di scenario">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #201717;">
+                     <children>
+                        <Button layoutX="323.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleresetScenario" text="Reset" />
+                        <Button layoutX="563.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleloadScenario" text="Load" />
+                        <GridPane layoutX="257.0" layoutY="78.0" prefHeight="303.0" prefWidth="453.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="NumberOfAircraft" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T8" GridPane.columnIndex="1" />
+                              <Label text="NumberOfTarget" textFill="#a8ee25" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T9" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="DtStart" textFill="#a8ee25" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="DtSend" textFill="#a8ee25" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="CaptureDistance" textFill="#a8ee25" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="AltitudeBand" textFill="#a8ee25" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="TargetFlyOverTime" textFill="#a8ee25" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="HorSpeed" textFill="#a8ee25" GridPane.rowIndex="7">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="MinFlightAltitude" textFill="#a8ee25" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="T12" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="T13" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="T14" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="T15" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="T16" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Parametri di algoritmo">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #201717;">
+                     <children>
+                        <Button layoutX="310.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleresetAlgo" text="Reset" />
+                        <Button layoutX="554.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleresetAlgo" text="Load" />
+                        <GridPane layoutX="282.0" layoutY="65.0" prefHeight="326.0" prefWidth="387.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="NumberOfNeg" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="DtNeg" textFill="#a8ee25" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="DtNegCicle" textFill="#a8ee25" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="PlanningTime" textFill="#a8ee25" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="DtAlgorithm" textFill="#a8ee25" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="AlgMaxLine" textFill="#a8ee25" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="AlgMaxCol" textFill="#a8ee25" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="EciCost" textFill="#a8ee25" GridPane.rowIndex="7">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Beta" textFill="#a8ee25" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="T17" GridPane.columnIndex="1" />
+                              <TextField fx:id="T18" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="T19" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="T20" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="T21" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="T22" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="T23" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="T24" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="T25" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Target">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="455.0" prefWidth="613.0" style="-fx-background-color: #201717;">
+                     <children>
+                        <Label layoutX="254.0" layoutY="100.0" text="TakeOff" textFill="#a8ee25">
+                           <font>
+                              <Font name="Corbel Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="395.0" layoutY="65.0" text="Lat[DEG]" textFill="#a8ee25">
+                           <font>
+                              <Font name="Corbel Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="581.0" layoutY="65.0" text="Lon[DEG]" textFill="#a8ee25">
+                           <font>
+                              <Font name="Corbel Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="T26" layoutX="349.0" layoutY="96.0" />
+                        <TextField fx:id="T27" layoutX="536.0" layoutY="96.0" />
+                        <Pane fx:id="P1" layoutX="270.0" layoutY="132.0">
+                           <children>
+                              <TextField fx:id="T28" layoutX="79.0" />
+                              <TextField fx:id="T29" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T1" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P2" layoutX="270.0" layoutY="167.0" prefHeight="25.0" prefWidth="549.0" visible="false">
+                           <children>
+                              <TextField fx:id="T30" layoutX="79.0" />
+                              <TextField fx:id="T31" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T2" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="435.0" mnemonicParsing="false" onAction="#handletargetButtonDel1" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P3" layoutX="270.0" layoutY="206.0" prefHeight="25.0" prefWidth="548.0" visible="false">
+                           <children>
+                              <TextField fx:id="T32" layoutX="79.0" />
+                              <TextField fx:id="T33" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T3" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="435.0" mnemonicParsing="false" onAction="#handletargetButtonDel2" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P4" layoutX="270.0" layoutY="241.0" prefHeight="25.0" prefWidth="550.0" visible="false">
+                           <children>
+                              <TextField fx:id="T34" layoutX="79.0" />
+                              <TextField fx:id="T35" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T4" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="437.0" mnemonicParsing="false" onAction="#handletargetButtonDel3" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P5" layoutX="270.0" layoutY="280.0" prefHeight="25.0" prefWidth="552.0" visible="false">
+                           <children>
+                              <TextField fx:id="T36" layoutX="79.0" />
+                              <TextField fx:id="T37" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T5" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="437.0" mnemonicParsing="false" onAction="#handletargetButtonDel4" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P6" layoutX="270.0" layoutY="312.0" prefHeight="25.0" prefWidth="549.0" visible="false">
+                           <children>
+                              <TextField fx:id="T38" layoutX="79.0" />
+                              <TextField fx:id="T39" layoutX="266.0" />
+                              <Label layoutY="4.0" text="T6" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="437.0" mnemonicParsing="false" onAction="#handletargetButtonDel5" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P7" layoutX="271.0" layoutY="347.0" prefHeight="25.0" prefWidth="548.0" visible="false">
+                           <children>
+                              <TextField fx:id="T40" layoutX="78.0" />
+                              <TextField fx:id="T41" layoutX="265.0" />
+                              <Label layoutY="4.0" text="T7" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="436.0" mnemonicParsing="false" onAction="#handletargetButtonDel6" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="P8" layoutX="271.0" layoutY="386.0" prefHeight="25.0" prefWidth="551.0" visible="false">
+                           <children>
+                              <TextField fx:id="T42" layoutX="78.0" />
+                              <TextField fx:id="T43" layoutX="265.0" />
+                              <Label layoutY="4.0" text="T8" textFill="#a8ee25">
+                                 <font>
+                                    <Font name="Corbel Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="438.0" mnemonicParsing="false" onAction="#handletargetButtonDel7" text="Delete Target" />
+                           </children>
+                        </Pane>
+                        <Button layoutX="398.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleresetTarget" text="Reset" />
+                        <Button layoutX="587.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleloadTarget" text="Load" />
+                        <Button fx:id="Add1" layoutX="608.0" layoutY="167.0" mnemonicParsing="false" onAction="#handletargetButtonAdd1" text="Add Target" />
+                        <Button fx:id="Add2" layoutX="608.0" layoutY="206.0" mnemonicParsing="false" onAction="#handletargetButtonAdd2" text="Add Target" visible="false" />
+                        <Button fx:id="Add3" layoutX="608.0" layoutY="247.0" mnemonicParsing="false" onAction="#handletargetButtonAdd3" text="Add Target" visible="false" />
+                        <Button fx:id="Add4" layoutX="608.0" layoutY="280.0" mnemonicParsing="false" onAction="#handletargetButtonAdd4" text="Add Target" visible="false" />
+                        <Button fx:id="Add5" layoutX="608.0" layoutY="312.0" mnemonicParsing="false" onAction="#handletargetButtonAdd5" text="Add Target" visible="false" />
+                        <Button fx:id="Add6" layoutX="608.0" layoutY="347.0" mnemonicParsing="false" onAction="#handletargetButtonAdd6" text="Add Target" visible="false" />
+                        <Button fx:id="Add7" layoutX="608.0" layoutY="386.0" mnemonicParsing="false" onAction="#handletargetButtonAdd7" text="Add Target" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
