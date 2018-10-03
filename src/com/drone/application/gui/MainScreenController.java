@@ -12,11 +12,15 @@ package com.drone.application.gui;
 
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.drone.application.gui.utils.DataSource;
+import com.drone.application.gui.utils.MouseClick;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.DirectionsPane;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
@@ -44,15 +48,21 @@ import javafx.stage.Stage;
 public class MainScreenController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
 	
 	final String RESOURCE_PATH = "resources/";
-	
+	final private String key = "";
 	protected static DataSource droneparameters;
 	protected GoogleMap map;
 	protected DirectionsService directionsService;
 	protected DirectionsPane directionsPane;
 	protected Marker DroneMarker;
 	protected LatLong takeOff;
+	
 	@FXML
 	protected GoogleMapView mapView;
+	
+	protected int numberOfTargets = 0;
+	protected ArrayList<Marker> targetMarkers;
+	
+	protected static boolean showTargets;
 	
 	public DataSource getDroneparameters() {
 		return MainScreenController.droneparameters;
@@ -72,8 +82,10 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		System.out.println("loading default datasource");
 		droneparameters = new DataSource();
 		System.out.println("params loaded");
-		//mapView.setKey("AIzaSyKwTCISuW2YXt-376JYLIxaX2_imQLuA20");
+		mapView.setKey(key);
 		mapView.addMapInitializedListener(this);
+
+		targetMarkers = new ArrayList<Marker>();
 	}
 	
 	
@@ -165,7 +177,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		}
 	}
 
-
+	/*-------------------------------------------------------------------------
+	 * Function to initialize google map
+	 * Default center values are set as 41.121086, 14.181095
+	 * ------------------------------------------------------------------------
+	 */
+	
 	@Override
 	public void mapInitialized() {
 		
@@ -179,19 +196,95 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		            .streetViewControl(false)
 		            .zoomControl(false)
 		            .zoom(12);
-		    
+
 		    map = mapView.createMap(mapOptions);
-		    //Add a marker to the map
-		    MarkerOptions markerOptions = new MarkerOptions();
 		    takeOff = new LatLong(41.121086, 14.181095);
-		    System.out.println("markers");
-		    markerOptions.position(takeOff)
-		                .visible(Boolean.TRUE)
-		                .title("TakeOff");
-		    DroneMarker = new Marker( markerOptions);
+		    map.addMouseEventHandler(UIEventType.click, new MouseClick() {
+		    	@Override
+		        public void handle(GMapMouseEvent gmme) {
+		            super.handle(gmme);
+		            if(numberOfTargets > 8) {
+		            	System.out.println("Max targets reached!!");
+		            	return;
+		            }
+		            numberOfTargets++;
+		            Marker target = drawTargetMarker(gmme.getLatLong(), numberOfTargets);
+		            targetMarkers.add(target);
+		            map.addMarker(target);
+		        }
+		    });
+		    
+		    //Add a Drone marker to the map
+		    String path = "file:src/com/drone/application/gui/resources/UIItems/drone.png";
+		    DroneMarker = createCustomMarker(takeOff, path, "Take Off");
 		    map.addMarker(DroneMarker);
+		    
+		    if(showTargets)
+		    	updateMapTargets();
 	}
 
+	/*-------------------------------------------------------------------------
+	 * Utility function to create custom markers
+	 * @Param: LatLong position: The position of marker.
+	 * @Param: String imagePath: The image path of the custom icon.
+	 * @Param: String title: Any title you want for marker.
+	 * ------------------------------------------------------------------------
+	 */
+	
+	private Marker createCustomMarker(LatLong position, String imagePath, String title) {
+		MarkerOptions markerOptions = new MarkerOptions();
+		String imgpath = MarkerImageFactory.createMarkerImage(imagePath, "png");
+		imgpath = imgpath.replace("(", "");
+	    imgpath = imgpath.replace(")", "");
+	    markerOptions.position(position)
+        .visible(Boolean.TRUE)
+        .title(title).icon(imgpath).label("D1");
+	    Marker newMarker = new Marker( markerOptions);
+		return newMarker;
+	}
+
+	/*-------------------------------------------------------------------------
+	 * Utility function to create Target Marker
+	 * @Param: GMapMouseEvent gmme: The mouseClick event.
+	 * @Param: int number: The number of Target.
+	 * ------------------------------------------------------------------------
+	 */
+	
+	private Marker drawTargetMarker(LatLong pos, int number) {
+		MarkerOptions markerOptions = new MarkerOptions();
+		markerOptions.position(pos)
+        .visible(Boolean.TRUE)
+        .title("Target").label("T" + number);
+	    Marker newMarker = new Marker(markerOptions);
+	    return newMarker;
+	}
+	
+	/*--------------------------------------------------------------------------
+	 * Update the markers in the Map whenever called.
+	 * Updates the map by fetching values from Datasource
+	 * -------------------------------------------------------------------------
+	 */
+	
+	protected void updateMapTargets() {
+		//Removing markers if already present
+		if(!targetMarkers.isEmpty())
+		map.removeMarkers(targetMarkers);
+
+		ArrayList<String> targets = droneparameters.getTargetParams();
+		numberOfTargets = 0;
+		for(String s : targets) {
+			numberOfTargets++;
+			String[] posCord = s.split(", ");
+			LatLong pos = new LatLong(Double.parseDouble(posCord[0]),Double.parseDouble(posCord[1]));
+			if(numberOfTargets == 1) {
+				continue;
+			}
+			System.out.println(s);
+			Marker target = drawTargetMarker(pos, numberOfTargets);
+			targetMarkers.add(target);
+			map.addMarker(target);
+		}
+	}
 
 	@Override
 	public void directionsReceived(DirectionsResult arg0, DirectionStatus arg1) {

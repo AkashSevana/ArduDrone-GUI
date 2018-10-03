@@ -63,9 +63,15 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 	
 	private int countPane = 0;
 	
+	// ArrayList of parameters parsed from Xls sheet
 	protected ArrayList<Integer> CommunicationParams;
 	protected ArrayList<Double> AlgorithmParams;
 	protected ArrayList<Double> ScenarioParams;
+	
+	/*-------------------------------------------------------------------------
+	 * Function which to initialize all tab values at once.
+	 * ------------------------------------------------------------------------
+	 */
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -118,9 +124,9 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	        
 	        window.setScene(scene);
 	        window.show();
+	        
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -331,17 +337,19 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 	@FXML
 	private void handleloadTarget(ActionEvent event) {
 		ArrayList<String> targetsParams;
-		
+
 		targetsParams = MainScreenController.droneparameters.getTargetParams();
 		Iterator<TextField> ll = latList.iterator();
 		Iterator<TextField> llon = lonList.iterator();
 		Iterator<String> tp = targetsParams.iterator();
-		
+
 		while(ll.hasNext() && tp.hasNext() && llon.hasNext()) {
 			String[] position = tp.next().split(", ");
 			ll.next().setText(position[0]);
 			llon.next().setText(position[1]);
 		}
+		
+		showTargets = true;
 	}
 	
 	

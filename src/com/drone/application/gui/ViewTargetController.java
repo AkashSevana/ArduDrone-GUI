@@ -33,6 +33,11 @@ public class ViewTargetController extends MainScreenController implements Initia
 	@FXML
 	private ArrayList<Label> labelList;
 	ArrayList<String> targetsParams;
+	
+	/*-------------------------------------------------------------------------
+	 * Function which to initialize target values.
+	 * ------------------------------------------------------------------------
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		targetsParams = MainScreenController.droneparameters.getTargetParams();

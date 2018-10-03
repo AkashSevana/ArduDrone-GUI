@@ -42,9 +42,15 @@ public class ViewMissionController extends MainScreenController implements Initi
 	@FXML
 	private ArrayList<TextField> algoList;
 	
+	// ArrayList of parameters parsed from Xls sheet
 	protected ArrayList<Integer> CommunicationParams;
 	protected ArrayList<Double> AlgorithmParams;
 	protected ArrayList<Double> ScenarioParams;
+	
+	/*-------------------------------------------------------------------------
+	 * Function which to initialize all tab values at once.
+	 * ------------------------------------------------------------------------
+	 */
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

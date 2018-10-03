@@ -68,6 +68,7 @@ public class ApriMissionController extends MainScreenController implements Initi
 	@FXML
 	private void handleApriLoad(ActionEvent event) {
 		System.out.println("Loading the values");
+		updateMapTargets();
 		loadMainScreen(event);
 	}
 	
