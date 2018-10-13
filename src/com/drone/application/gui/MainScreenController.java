@@ -51,8 +51,8 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	protected DirectionsService directionsService;
 	protected DirectionsPane directionsPane;
 	protected Marker DroneMarker;
-	protected LatLong takeOff;
-	
+	protected static LatLong takeOff;
+	public static int noOfDrones = 0;
 	@FXML
 	protected GoogleMapView mapView;
 	
@@ -90,7 +90,6 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		System.out.println("loading default datasource");
 		droneparameters = new DataSource();
 		System.out.println("params loaded");
-
 		if(mapView != null) {
 			mapView.setKey(key);
 			mapView.addMapInitializedListener(this);
@@ -171,8 +170,9 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	@Override
 	public void mapInitialized() {
 		System.out.println("init");
+		takeOff = new LatLong(droneparameters.takeofflat, droneparameters.takeofflon);
 		 MapOptions mapOptions = new MapOptions();
-		    mapOptions.center(new LatLong(41.121086, 14.181095))
+		    mapOptions.center(takeOff)
 		            .mapType(MapTypeIdEnum.ROADMAP)
 		            .overviewMapControl(false)
 		            .panControl(false)
@@ -183,7 +183,6 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		            .zoom(12);
 
 		    map = mapView.createMap(mapOptions);
-		    takeOff = new LatLong(41.121086, 14.181095);
 		    map.addMouseEventHandler(UIEventType.click, new MouseClick() {
 		    	@Override
 		        public void handle(GMapMouseEvent gmme) {
@@ -198,11 +197,20 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		            map.addMarker(target);
 		        }
 		    });
+		    noOfDrones = droneparameters.getDrones().size();
+		    System.out.println(noOfDrones);
 		    
-		    //Add a Drone marker to the map
+		    //Add Drones marker to the map
 		    String path = "file:src/com/drone/application/gui/resources/UIItems/drone.png";
-		    DroneMarker = createCustomMarker(takeOff, path, "Take Off");
-		    map.addMarker(DroneMarker);
+		    for(int i = 1; i <= noOfDrones; i++) {
+		    	DroneMarker = createCustomMarker(takeOff, path, "Take Off");
+			    map.addMarker(DroneMarker);
+		    }
+		    
+		    if(noOfDrones == 0) {
+		    	DroneMarker = createCustomMarker(takeOff, path, "Take Off");
+			    map.addMarker(DroneMarker);
+		    }
 		    
 		    if(showTargets)
 		    	updateMapTargets();
@@ -255,6 +263,16 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		if(targetMarkers == null) {
 			return;
 		}
+		
+		noOfDrones = droneparameters.getDrones().size();
+	    System.out.println(noOfDrones);
+	    
+	    //Add Drones marker to the map
+	    String path = "file:src/com/drone/application/gui/resources/UIItems/drone.png";
+	    for(int i = 1; i <= noOfDrones; i++) {
+	    	DroneMarker = createCustomMarker(takeOff, path, "Take Off for drone" + i);
+		    map.addMarker(DroneMarker);
+	    }
 		
 		if(!targetMarkers.isEmpty())
 		map.removeMarkers(targetMarkers);

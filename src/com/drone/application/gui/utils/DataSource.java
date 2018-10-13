@@ -65,8 +65,16 @@ public class DataSource {
     /*
         Target
     */
-    private double takeofflat;
-    private double takeofflon;
+    public double takeofflat;
+    public ArrayList<Integer> getDrones() {
+		return drones;
+	}
+
+	public void setDrones(ArrayList<Integer> drones) {
+		this.drones = drones;
+	}
+
+	public double takeofflon;
     
     private double T1latOwnDeg;
     private double T2latOwnDeg;
@@ -87,6 +95,8 @@ public class DataSource {
     private double T8lonOwnDeg;
     
     ArrayList<String> TargetParams;
+    
+    ArrayList<Integer> drones;
     
     public int getNumberOfSendToAutopilot() {
         return numberOfSendToAutopilot;
@@ -492,6 +502,7 @@ public class DataSource {
         ScenarioParams = new ArrayList<Double>();               
         CommunicationParams = new ArrayList<Integer>();
         TargetParams = new ArrayList<String>();
+        drones = new ArrayList<Integer>();
         ReadXls xls = new ReadXls(file);
         try{
             
@@ -651,7 +662,14 @@ public class DataSource {
                             T8latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T8lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
                             TargetParams.add(new String(T8latOwnDeg + ", " + T8lonOwnDeg));
-                            System.out.println(T8latOwnDeg);
+                        }
+                        if (data[j][i].equals("A1")) {
+                            Integer latOwnDeg = Integer.parseInt(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                                                     
+                            drones.add(latOwnDeg);
+                        }
+                        if (data[j][i].equals("A2")) {
+                        	Integer latOwnDeg = Integer.parseInt(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                                                     
+                            drones.add(latOwnDeg);
                         }
                     }
                 }
