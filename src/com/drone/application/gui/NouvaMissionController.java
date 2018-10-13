@@ -75,8 +75,9 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("hello Nuova");
 		if(MainScreenController.droneparameters == null)
-			System.out.println("why null");
+			super.initialize(location, resources);
 		CommunicationParams = MainScreenController.droneparameters.getCommunicationParams();
 		if(CommunicationParams == null)
 			System.out.println("why null");
@@ -109,29 +110,6 @@ public class NouvaMissionController extends ViewMissionController implements Ini
 			t.setText(value.toString());
 		}
 	}
-	
-	/*-------------------------------------------------------------------------
-	 * Function which is used to Navigate back to Main Screen
-	 * @Param: ActionEvent
-	 * ------------------------------------------------------------------------
-	 */
-	
-	@FXML
-    private void loadMainScreen(ActionEvent event) {
-		System.out.println("loading MainScreen " + getClass().getResource(RESOURCE_PATH + "MainScreen.fxml"));
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource(RESOURCE_PATH + "MainScreen.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	        window.setScene(scene);
-	        window.show();
-	        
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	
 	/*-------------------------------------------------------------------------
 	 * Handlers for Reset and Load Buttons in Paremetri di comunicazione tab

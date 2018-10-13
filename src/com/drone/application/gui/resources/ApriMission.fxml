@@ -7,40 +7,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.ApriMissionController">
-   <top>
-      <Pane>
-         <children>
-            <Label layoutX="295.0" text="APRI MISSION" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="MV Boli" size="50.0" />
-               </font>
-            </Label>
-            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadMainScreen">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@UIItems/icons8-back-to-filled-50.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #201717;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="ApriLoad" layoutX="454.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleApriLoad" text="Load" />
-            <Label layoutX="95.0" layoutY="93.0" text="Missione Path: " textFill="#eed2d2">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <TextField fx:id="ApriPath" layoutX="280.0" layoutY="97.0" prefHeight="25.0" prefWidth="391.0" />
-            <Button fx:id="ApriBrowse" layoutX="700.0" layoutY="97.0" mnemonicParsing="false" onAction="#handleBrowse" onMouseClicked="#handleBrowse" text="Browse" />
-            <TextArea fx:id="ApriText" layoutX="250.0" layoutY="159.0" prefHeight="193.0" prefWidth="450.0" />
-         </children>
-      </AnchorPane>
-   </center>
-</BorderPane>
+
+<AnchorPane layoutX="100.0" layoutY="60.0" style="-fx-background-color: #201717;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.drone.application.gui.ApriMissionController">
+   <children>
+      <Button fx:id="ApriLoad" layoutX="255.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleApriLoad" text="Load" />
+      <Label layoutX="36.0" layoutY="28.0" text="Missione Path: " textFill="#eed2d2">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ApriPath" layoutX="203.0" layoutY="34.0" prefHeight="25.0" prefWidth="348.0" />
+      <Button fx:id="ApriBrowse" layoutX="484.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleBrowse" onMouseClicked="#handleBrowse" text="Browse" />
+      <TextArea fx:id="ApriText" layoutX="34.0" layoutY="113.0" prefHeight="193.0" prefWidth="450.0" />
+   </children>
+</AnchorPane>

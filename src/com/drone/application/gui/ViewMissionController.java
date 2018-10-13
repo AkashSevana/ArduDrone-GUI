@@ -54,8 +54,9 @@ public class ViewMissionController extends MainScreenController implements Initi
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("hello Mission");
 		if(MainScreenController.droneparameters == null)
-			System.out.println("why null");
+			super.initialize(location, resources);
 		CommunicationParams = MainScreenController.droneparameters.getCommunicationParams();
 		if(CommunicationParams == null)
 			System.out.println("why null");

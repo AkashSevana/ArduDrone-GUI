@@ -36,21 +36,18 @@ import com.lynden.gmapsfx.util.MarkerImageFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 public class MainScreenController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
 	
 	final String RESOURCE_PATH = "resources/";
-	final private String key = "";
+	final private String key = "AIzaSyD_hce37QhlyI59U2KDKiTEJMSlns47d6E";
 	protected static DataSource droneparameters;
-	protected GoogleMap map;
+	protected static GoogleMap map;
 	protected DirectionsService directionsService;
 	protected DirectionsPane directionsPane;
 	protected Marker DroneMarker;
@@ -59,8 +56,20 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	@FXML
 	protected GoogleMapView mapView;
 	
-	protected int numberOfTargets = 0;
-	protected ArrayList<Marker> targetMarkers;
+	@FXML
+	protected TabPane NouvaTab;
+	
+	@FXML
+	protected AnchorPane ApriTab;
+	
+	@FXML
+	protected TabPane ViewMissionTab;
+	
+	@FXML
+	protected AnchorPane ViewTargetsTab;
+	
+	protected static int numberOfTargets = 0;
+	protected static ArrayList<Marker> targetMarkers;
 	
 	protected static boolean showTargets;
 	
@@ -68,12 +77,11 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		return MainScreenController.droneparameters;
 	}
 
-
 	public void setDroneparameters(DataSource droneparameters) {
 		MainScreenController.droneparameters = droneparameters;
+		System.out.println(MainScreenController.droneparameters.toString());
 	}
-
-
+	
 	@FXML
 	protected BorderPane MainScreen;
 	
@@ -82,10 +90,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		System.out.println("loading default datasource");
 		droneparameters = new DataSource();
 		System.out.println("params loaded");
-		mapView.setKey(key);
-		mapView.addMapInitializedListener(this);
 
-		targetMarkers = new ArrayList<Marker>();
+		if(mapView != null) {
+			mapView.setKey(key);
+			mapView.addMapInitializedListener(this);
+			targetMarkers = new ArrayList<Marker>();
+		}
 	}
 	
 	
@@ -97,18 +107,11 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	
 	@FXML
     private void loadNuovaMissione(ActionEvent event) {
-		System.out.println("loading NuovaMissione " + getClass().getResource(RESOURCE_PATH + "NouvaMission.fxml"));
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource(RESOURCE_PATH + "NouvaMission.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
-			Stage window = (Stage)((Node)MainScreen).getScene().getWindow();
-	        
-	        window.setScene(scene);
-	        window.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		houseKeeping();
+		if(!NouvaTab.isVisible())
+			NouvaTab.setVisible(true);
+		else
+			NouvaTab.setVisible(false);
 	}
 
 	/*-------------------------------------------------------------------------
@@ -119,18 +122,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 
 	@FXML
     private void loadApriMissione(ActionEvent event) {
-		System.out.println("loading Apri Missione " + getClass().getResource(RESOURCE_PATH + "ApriMission.fxml"));
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource(RESOURCE_PATH + "ApriMission.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
-			Stage window = (Stage)((Node)MainScreen).getScene().getWindow();
-	        
-	        window.setScene(scene);
-	        window.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		houseKeeping();
+		System.out.println("loading Apri Missione ");
+		if(!ApriTab.isVisible())
+			ApriTab.setVisible(true);
+		else
+			ApriTab.setVisible(false);
 	}
 
 	/*-------------------------------------------------------------------------
@@ -141,18 +138,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 
 	@FXML
     private void loadViewMissione(MouseEvent event) {
-		System.out.println("loading View Missione " + getClass().getResource(RESOURCE_PATH + "ViewMission.fxml"));
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource(RESOURCE_PATH + "ViewMission.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
-			Stage window = (Stage)((Node)MainScreen).getScene().getWindow();
-	        
-	        window.setScene(scene);
-	        window.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("loading View Missione ");
+		houseKeeping();
+		if(!ViewMissionTab.isVisible())
+			ViewMissionTab.setVisible(true);
+		else
+			ViewMissionTab.setVisible(false);
 	}
 
 	/*-------------------------------------------------------------------------
@@ -163,18 +154,12 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 
 	@FXML
     private void loadViewTarget(MouseEvent event) {
-		System.out.println("loading View Target " + getClass().getResource(RESOURCE_PATH + "ViewTargets.fxml"));
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource(RESOURCE_PATH + "ViewTargets.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource(RESOURCE_PATH + "application.css").toExternalForm());
-			Stage window = (Stage)((Node)MainScreen).getScene().getWindow();
-	        
-	        window.setScene(scene);
-	        window.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("loading View Target ");
+		houseKeeping();
+		if(!ViewTargetsTab.isVisible())
+			ViewTargetsTab.setVisible(true);
+		else
+			ViewTargetsTab.setVisible(false);
 	}
 
 	/*-------------------------------------------------------------------------
@@ -185,7 +170,7 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	
 	@Override
 	public void mapInitialized() {
-		
+		System.out.println("init");
 		 MapOptions mapOptions = new MapOptions();
 		    mapOptions.center(new LatLong(41.121086, 14.181095))
 		            .mapType(MapTypeIdEnum.ROADMAP)
@@ -203,7 +188,7 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 		    	@Override
 		        public void handle(GMapMouseEvent gmme) {
 		            super.handle(gmme);
-		            if(numberOfTargets > 8) {
+		            if(numberOfTargets >= 8) {
 		            	System.out.println("Max targets reached!!");
 		            	return;
 		            }
@@ -267,6 +252,10 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	
 	protected void updateMapTargets() {
 		//Removing markers if already present
+		if(targetMarkers == null) {
+			return;
+		}
+		
 		if(!targetMarkers.isEmpty())
 		map.removeMarkers(targetMarkers);
 
@@ -280,7 +269,7 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 				continue;
 			}
 			System.out.println(s);
-			Marker target = drawTargetMarker(pos, numberOfTargets);
+			Marker target = drawTargetMarker(pos, numberOfTargets - 1);
 			targetMarkers.add(target);
 			map.addMarker(target);
 		}
@@ -289,5 +278,21 @@ public class MainScreenController implements Initializable, MapComponentInitiali
 	@Override
 	public void directionsReceived(DirectionsResult arg0, DirectionStatus arg1) {
 		
+	}
+	
+	@FXML
+    private void handleHousekeeping(MouseEvent event) {
+		houseKeeping();
+	}
+	
+	private void houseKeeping() {
+		if(NouvaTab != null)
+			NouvaTab.setVisible(false);
+		if(ApriTab != null)
+			ApriTab.setVisible(false);
+		if(ViewTargetsTab != null)
+			ViewTargetsTab.setVisible(false);
+		if(ViewMissionTab != null)
+			ViewMissionTab.setVisible(false);
 	}
 }

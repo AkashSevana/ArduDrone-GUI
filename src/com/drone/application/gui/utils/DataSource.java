@@ -651,6 +651,7 @@ public class DataSource {
                             T8latOwnDeg = Double.parseDouble(data[j + 1][i].replace(',', '.'));         // [deg] Latitudine del punto di decollo                           
                             T8lonOwnDeg = Double.parseDouble(data[j + 2][i].replace(',', '.'));         // [def] Longitudine del punto di decollo                           
                             TargetParams.add(new String(T8latOwnDeg + ", " + T8lonOwnDeg));
+                            System.out.println(T8latOwnDeg);
                         }
                     }
                 }
